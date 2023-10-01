@@ -1,5 +1,6 @@
 
+import LdDualRing from '../components/ld_dual_ring/ld_dual_ring'
+
 export default function Loading() {
-  // Or a custom loading skeleton component
-  return <p>'Loading...'</p>
+  return (<LdDualRing error={false} />)
 }

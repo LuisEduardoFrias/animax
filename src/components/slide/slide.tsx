@@ -32,8 +32,8 @@ export default function Slide({ cards }: ISlideProps) : React.FC {
   };
   
   const handleActive = (index:number) => {
-    setCurrentIndex(index);
-    scrollIntoView();
+    // setCurrentIndex(index);
+//     scrollIntoView();
   };
   
   const scrollIntoView = () => {

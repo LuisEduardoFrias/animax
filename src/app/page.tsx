@@ -1,12 +1,12 @@
 
 import Slide ,{ ICard } from '../components/slide/slide'
 import styles from './page.module.css'
-import { Anime } from "../interfaces/top.anime.ts";
-import fetchAnimeData from '../functions_tools/get_top_anime'
+import { IAnime } from "../interfaces/anime_card.ts";
+import GetApiJikan from '../functions_tools/get_api_jikan'
 
 async function animeCardAdacter(page:number, limit:number): Promise<ICard[]> {
  
-  const animes = await fetchAnimeData(page, limit);
+  const animes = await GetApiJikan<IAnime[]>(`top/anime?page=${page}&limit=${limit}`);
   
   const cards: ICard[] = animes?.data?.map((e) => 
   {
@@ -21,20 +21,23 @@ async function animeCardAdacter(page:number, limit:number): Promise<ICard[]> {
 }
 
 export default async function Home() {
-  let cards1: ICard[] = [];
-  let cards2: ICard[] = [];
-  let cards3: ICard[] = [];
 
-  cards1 = await animeCardAdacter(1, 10);
-  cards2 = await animeCardAdacter(11, 10);
-  cards3 = await animeCardAdacter(21, 10);
+  const cards1: ICard[] = await animeCardAdacter(1, 10);
+  const cards2: ICard[] = await animeCardAdacter(11, 10);
+  const cards3: ICard[] = await animeCardAdacter(21, 10);
+  const cards4: ICard[] = await animeCardAdacter(31, 10);
+  const cards5: ICard[] = await animeCardAdacter(41, 10);
+  const cards6: ICard[] = await animeCardAdacter(51, 10);
   
   return (
     <div className={styles.containerPage}>
-    {console.log(cards1)}
+    {console.log(cards6)}
       <Slide cards={cards1} />
       <Slide cards={cards2} />
       <Slide cards={cards3} />
+      <Slide cards={cards4} />
+      <Slide cards={cards5} />
+      <Slide cards={cards6} />
     </div>
   );
 }

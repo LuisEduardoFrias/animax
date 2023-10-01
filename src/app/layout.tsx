@@ -242,7 +242,7 @@ export default function RootLayout({children}: { children: React.ReactNode})
     <div className={styles.grid}>
      <header className={styles.header}>
       <img
-      src="https://static.wikia.nocookie.net/logopedia/images/9/9b/Animax_2005.svg/revision/latest?cb=20221101002549" width="120"  height="60" alt="logo de animax"/>
+      src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Animax.png" width="170"  height="50" alt="logo de animax"/>
       <Navbar menus={menus} />
      </header>
      <main className={styles.main} >

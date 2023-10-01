@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import './backbutton.css'
 
 export default function backButton() {
   const router = useRouter();
@@ -10,6 +11,6 @@ export default function backButton() {
   };
 
   return (
-    <button onClick={retroceder}>Volver</button>
+    <button className="button" onClick={retroceder}>Volver</button>
   );
 };
