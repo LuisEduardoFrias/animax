@@ -1,13 +1,13 @@
+
 import Link from 'next/link'
-import styles from './navbar.module.css'
 import Icon from '../icon/icon'
 import LiClient from './li_client'
-// import Icon from '@mui/material/Icon';
+import styles from './navbar.module.css'
 
 export interface Property {
  ob: IOption;
  i: number;
- pl?: boolean; //primary lever
+ pl?: boolean;
 }
 
 export interface IOption {
@@ -34,8 +34,7 @@ export default function NavBar({menus}: IOption[]) : JSX.Element {
 export function menuOption({ob,i,pl} : Property) : JSX.Element {
  return (
   ob?.sub?.length !== 0 ? 
-  <LiClient ob={ob} i={i} pl={pl} /> : 
-  <Li ob={ob} i={i} />
+  <LiClient ob={ob} i={i} pl={pl} /> : Li({ob, i})
  )
 }
 

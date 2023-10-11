@@ -1,0 +1,77 @@
+
+.h1 {
+ font-size: 30px;
+ text-align: center;
+ margin-bottom: 30px;
+}
+
+.input {
+  background-color: rgba(var(--callout-rgb), 0.5);
+  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
+  border-radius: 5px 5px 0px 0px;
+  height: 25px;
+  width: 100%;
+  padding-inline: 4px;
+}
+
+.container {
+ margin-top: 30px;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 8px;
+ padding: 15px;
+ overflow-y: scroll;
+ height: 300px;
+}
+
+.container div {
+ 
+}
+
+.contenImg{
+ background-color: #1f1f1f;
+ border: 1px solid lightgray;
+ border-radius: 3px 3px;
+ box-sizing: border-box;
+ padding: 3px;
+}
+
+/* Estilos para el datalist */
+
+.rating_options {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+.rating_options option {
+  padding: 5px;
+  font-size: 14px;
+}
+
+/* Estilos para el filter */
+
+.typeFilter {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px 5px;
+}
+
+.typeFilter legend {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.radioConten {
+ display: flex;
+ align-items: center;
+ padding: 3px;
+}
+
+.label {
+  margin-right: 10px;
+}
+
+.radioInput {
+  margin-left: 5px;
+}

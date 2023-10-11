@@ -16,23 +16,18 @@ export default function LiClient({ob,i,pl} : Property) : JSX.Element {
  }
  
  return( 
-  <li key={i} onClick={isShow} className={styles.li}>
-   {
-   <div className={styles.containerArrow}>
+  <li key={i} className={styles.li}>
+   <div onClick={isShow} className={styles.containerArrow}>
     <div className={styles.liIconText}>
      { isIcon(ob) }
      <label>{ob.name}</label>
     </div>
     <Icon iconName={ !show ? "chevron_right" : "keyboard_arrow_down"}/>
    </div>
-   }
-   {
-   <div style={ show ? {display:'flex'} : {}} 
-        className={styles.containerUl}>
+   <div style={ show ? {display:'flex'} : {}} className={styles.containerUl}>
     <ul className={_pl ? styles.ulSMPL : styles.ulSMOL}>
      {ob?.sub?.map((ob,i)=>menuOption({ob,i,pl:false})) }
     </ul>
    </div>
-   }
   </li>)
 }

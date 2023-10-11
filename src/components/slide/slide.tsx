@@ -1,9 +1,11 @@
 'use client'
 
 import { useState, useRef } from 'react';
-import Link from 'next/link'
 import styles from './slide.module.css'
-import Icon from '../icon/icon'
+import Link from 'next/link'
+import Notification from '@/components/notification/notification'
+import Button from './button'
+import ImagesCard from './images_card'
 
 export interface ICard {
  key: number;
@@ -16,8 +18,7 @@ interface ISlideProps {
 }
 
 export default function Slide({ cards }: ISlideProps) : React.FC {
-  console.log('cards')
-  console.log(cards)
+ 
   const [currentIndex, setCurrentIndex] = useState(1);
   const cardContainerRef = useRef<HTMLDivElement>(null);
 
@@ -31,11 +32,6 @@ export default function Slide({ cards }: ISlideProps) : React.FC {
     scrollIntoView();
   };
   
-  const handleActive = (index:number) => {
-    // setCurrentIndex(index);
-//     scrollIntoView();
-  };
-  
   const scrollIntoView = () => {
     if (cardContainerRef.current) {
       cardContainerRef.current.children[currentIndex].scrollIntoView({
@@ -44,43 +40,27 @@ export default function Slide({ cards }: ISlideProps) : React.FC {
       });
     }
   };
-
+  
+  const _classNames = (index:number) => {
+  return `${styles.card} ${index + 1 === currentIndex ? styles.active : ''}`;}
+  
+  const images = cards ?
+   <>
+    <Button handle={handlePrev} name={'arrow_back_ios'} />
+     <div className={styles.cardContainer} ref={cardContainerRef} >
+     {
+      cards?.map((card, index) => (
+      <Link key={card.key} href={`/animedetail?id=${card.key}`} passHref>
+        <ImagesCard card={card} ContenClass={_classNames(index)} />
+      </Link>))
+     }
+     </div>
+    <Button handle={handleNext} name={'arrow_forward_ios'} />
+   </>
+   : <Notification text="Data Not Found" />
+  
   return (
   <div className={styles.sline}>
-   {Button(handlePrev, "arrow_back_ios")}
-   <div className={styles.cardContainer} 
-   ref={cardContainerRef} >
-    {ImagesCard(cards, currentIndex, handleActive)}
-   </div>
-   {Button(handleNext, "arrow_forward_ios")}
+   {images}
   </div>)
-}
- 
-function ImagesCard(cards, currentIndex, handleActive) : JSX.Element {
- 
- const classNames = (index:number) => {
-  return `${styles.card} ${index + 1 === currentIndex ? styles.active : ''}`;}
- 
- return (
-  cards?.map((card, index) => (
-  <Link key={card.key} href={`/animedetail?id=${card.key}`} passHref>
-  <div key={index} className={classNames(index)} onClick={()=>handleActive(index+1)} >
-    <img key={card.key}
-     src={card.imgUrl} 
-     alt={`Image ${index + 1}`} 
-     className={styles.image} />
-    <label 
-     className={styles.name}>{card.tittle}
-    </label>
-  </div>
-  </Link>))
- )
-}
-
-function Button(handle, name) : JSX.Element {
- return (
-  <button className={styles.button} onClick={handle}>
-   <Icon iconName={name} />
-  </button>
- )
 }

@@ -1,20 +1,19 @@
 
 export default async function GetApiJikan<T>(url: string) : Promise<T> {
- 
-  const _url = `https://api.jikan.moe/v4/${url}`;
-
   try {
-    const response = await fetch(_url);
-
+    const response = await fetch(`https://api.jikan.moe/v4/${url}`);
+     
     if (!response.ok) {
-      throw new Error("Error al obtener los datos de anime");
+     throw new Error("Error al obtener los datos de anime");
+     console.error("Error al obtener los datos de anime");
+     return undefined;
     }
-
-    const data = await response.json();
-    return data as T;
-    
+    else {
+     return (await response.json()) as T;
+    }
   } catch (error) {
     console.error(error);
     // throw new Error("Error al obtener los datos de anime");
+    return undefined;
   }
 }

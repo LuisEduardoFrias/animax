@@ -4,16 +4,16 @@ import { Suspense } from 'react'
 import type { Metadata } from 'next'
 import styles from './page.module.css'
 import Loading from './loading'
-import { Black_Ops_One, Inter } from 'next/font/google'
-// import { Inter } from 'next/font/google'
+import { BlackOpsOne, Inter, Permanent_Marker } from 'next/font/google'
+
 import Navbar from '../components/navbar/navbar'
 
-const fontStyle = Inter({ subsets: ['latin'] })
+// const fontStyle = Inter({ subsets: ['latin'] })
 
-// const fontStyle = Black_Ops_One({
-//  style: ['italic','normal'],
-//  subsets: ['latin']
-// })
+const fontStyle = Inter({
+ style: ['normal'],
+ subsets: ['latin']
+})
 
 export const metadata: Metadata = {
   title: 'Animax',
@@ -224,15 +224,15 @@ const menus : IOption[] = [
     icon:"folder_copy"
   },
   {
-    name:"Filter",
-    href:"/filter",
+    name:"Search",
+    href:"/search",
     sub: [],
-    icon:"work"
+    icon:"search"
   }
 ]
 
 export default function RootLayout({children}: { children: React.ReactNode}) 
-{ //inter.className
+{ 
   return (
   <html lang="en">
    <head>

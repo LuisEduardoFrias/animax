@@ -2,13 +2,14 @@
 .nav {
  overflow-x: scroll;
  width: 100%;
+ padding-inline: 10px 10px;
 }
 
 .nav ul {
  display: flex;
  justify-content: space-between;
  align-items: center;
- gap: 2px;
+ gap: 4px;
  padding: 1px 1px;
 }
 
@@ -59,7 +60,7 @@
 }
 
 .ulSMPL {
- display: none;
+ display: flex;
  flex-direction: column;
  gap: 5px;
  width: 150px;
@@ -74,7 +75,7 @@
 }
 
 .ulSMOL {
- display: none;
+ display: flex;
  flex-direction: column;
  gap: 5px;
  width: 150px;

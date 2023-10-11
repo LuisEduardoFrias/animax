@@ -3,6 +3,7 @@
   --callout-border-rgb: 172, 175, 176;
   --primary: 0, 167, 201; 
   --secondary: 54, 54, 54;
+  --tercer: 24, 88, 176;
 }
 
 @media (prefers-color-scheme: dark) {
