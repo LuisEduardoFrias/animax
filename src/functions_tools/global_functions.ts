@@ -6,6 +6,7 @@ declare global {
     NewElement: (element: string) => HTMLElement;
     NewText: (text: string) => HTMLElement;
     Log: (text:string) => void;
+    LogJ: (text:string) => void;
     A: (text:string) => void;
     AJ: (obj:object) => void;
   }
@@ -34,6 +35,9 @@ window.NewText = (text:string) => {
   return document.createTextNode(text);
 }
 window.Log = (text:string) => {
+ console.log(text);
+};
+window.LogJ = (text:string) => {
  console.log(JSON.stringify(text));
 };
 window.A = (text:string) => {

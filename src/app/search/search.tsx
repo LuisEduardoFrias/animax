@@ -5,13 +5,21 @@ import ScrollContainer, { useScroll } from '@/components/scroll_container/scroll
 import Notification from '@/components/notification/notification'
 import GetApiJikan from '@/functions_tools/get_api_jikan'
 import { ICard } from '@/components/slide/slide'
-import { useState, useEffect } from 'react';
+import Link from 'next/link'
+import { useState, useEffect } from 'react'
 import styles from './page.module.css'
+import LdDualRing from '@/components/ld_dual_ring/ld_dual_ring'
 
-enum FilterType {
- titter,
- startDate
+const styleCl =  {
+ display: 'flex', 
+ flexDirection: 'column', 
+ alignItems: 'center',
+ justifyContent: 'center', 
+ height: '60px', 
+ width: '100%', 
+ boxSizing: 'border-box', 
 }
+
 
 export default function Search() {
  
@@ -19,33 +27,38 @@ export default function Search() {
   const [searchInput, setSearchInput] = useState('');
   const [ratingInput, setRatingInput] = useState('g');
   const [typeSelect, setTypeSelect] = useState('tv');
-  const [filterType, setFilterType] = useState<FilterType>(FilterType.letter);
-  const [nextPage, setNextPage] = useState(2);
+  const [filterType, setFilterType] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
  
   useEffect(() => {
    
-  const fetchData = async () => {
-    if (searchInput !== '') {
+   const fetchData = async () => {
+     if (searchInput !== '') {
+      setIsLoading(true);
       const animes = await animeSearchAdacter(searchInput, ratingInput, typeSelect);
-      setSearching([...searching, ...(await animes)]);
-    }
-  };
+      setIsLoading(false);
+      setSearching([...(await animes)]);
+     }
+   };
   
-  fetchData();
-}, [searchInput, ratingInput, typeSelect]);
+   fetchData();
+  }, [searchInput, ratingInput, typeSelect]);
   
   useScroll(async (contenedor: HTMLElement, _setLoading: (boolean) => void) => {
-    const animes = await animeSearchAdacter(searchInput, ratingInput, typeSelect, nextPage );
-    setSearching([ ...searching, ...(await animes) ]);
+    if(nextPage !== ((searching.length/25) + 1)) {
+     const animes = await animeSearchAdacter(searchInput, ratingInput, typeSelect, nextPage );
+     setSearching([ ...searching, ...(await animes) ]);
+     setNextPage((searching.length/25) + 1);
+    }
+    
     _setLoading(false);
-    setNextPage((searching/25) + 1);
   });
   
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     
     if(event.target.name === 'search') {
-     setSearchInput(value);
+     setSearchInput((value.charAt(0)).replace(/[^a-zA-Z]/g, ''));
     } else if(event.target.name === 'rating') {
      setRatingInput(value);
     } else {
@@ -54,24 +67,22 @@ export default function Search() {
   };
   
   const handleFilterTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFilterType(event.target.value);
+    setFilterType(parseInt(event.target.value));
   }
   
   async function animeSearchAdacter(_string:string, rating: string, type: string, page?: number): Promise<ICard[]>  {
     
     let searchParam = '';
     
-    if (filterType === FilterType.litter) {
+    if (filterType === 0) {
       searchParam = `letter=${_string}&rating=${rating}&type=${type}`;
-    } else if (filterType === FilterType.startDate) {
+    } else if (filterType === 1) {
       searchParam = `start_date=${_string}&rating=${rating}&type=${type}`;
     }
     
     if(page) {
       searchParam += `&page=${page}`;
     }
-    
-    alert(`anime?${searchParam}`);
     
     const animes = await GetApiJikan<IAnime[]>(`anime?${searchParam}`);
     
@@ -91,13 +102,13 @@ export default function Search() {
     <>
      <fieldset className={styles.typeFilter} >
       <legend>Type Filter</legend>
-      <div className={styles.radioConten} >
+      <div className={styles.radioConten} onClick={handleFilterTypeChange} >
         <label className={styles.label}>Letter</label>
-        <input type="radio" checked={filterType === FilterType.letter} name="filterType" value={FilterType.letter} className={styles.radioInput} onChange={handleFilterTypeChange} />
+        <input type="radio" checked={filterType === 0} name="filterType" value={0} className={styles.radioInput} onChange={handleFilterTypeChange} />
       </div>
-      <div className={styles.radioConten} >
+      <div className={styles.radioConten} onClick={handleFilterTypeChange} >
         <label className={styles.label}>Start Date</label>
-        <input type="radio" checked={filterType === FilterType.startDate} value={FilterType.startDate}  name="filterType" className={styles.radioInput} onChange={handleFilterTypeChange} />
+        <input type="radio" checked={filterType === 1} value={1}  name="filterType" className={styles.radioInput}  />
       </div>
      </fieldset>
      <br />
@@ -107,7 +118,7 @@ export default function Search() {
        placeholder="search" 
        name="search" 
        value={searchInput}
-       type={filterType === FilterType.letter ? "text" : "date"}
+       type={filterType === 0 ? "text" : "date"}
        onChange={handleChange} 
      />
      <hr />
@@ -135,12 +146,18 @@ export default function Search() {
      <hr />
           
     <ScrollContainer cssClass={styles.container} >
+      { isLoading === true ? 
+      <div style={styleCl}>
+        <LdDualRing error={false} />
+      </div> : null }
       { searching && searching.length !== 0 ? 
        <> { 
          searching.map((e,i) => 
-         <div className={styles.contenImg}>
-          <ImagesCard card={e} key={i} index={i} />
-         </div>) 
+         <Link key={e.key} href={`/animedetail?id=${e.key}`} passHref>
+           <div className={styles.contenImg}>
+            <ImagesCard card={e} key={i} index={i} />
+           </div>
+         </Link>) 
         } </>
         : <Notification text="Not Data" /> }
      </ScrollContainer>

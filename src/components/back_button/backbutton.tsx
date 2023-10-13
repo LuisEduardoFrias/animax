@@ -11,6 +11,6 @@ export default function backButton() {
   };
 
   return (
-    <button className="button" onClick={retroceder}>Volver</button>
+    <button className="button" onClick={retroceder}>Back</button>
   );
 };

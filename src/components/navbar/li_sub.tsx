@@ -5,7 +5,7 @@ import Icon from '../icon/icon'
 import { Property, isIcon, menuOption } from './navbar'
 import { useState } from 'react'
 
-export default function LiClient({ob,i,pl} : Property) : JSX.Element {
+export default function LiSub({ob,i,pl} : Property) : JSX.Element {
  
  const [show, setShow] = useState(false)
  

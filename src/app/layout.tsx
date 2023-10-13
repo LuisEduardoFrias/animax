@@ -7,13 +7,9 @@ import Loading from './loading'
 import { BlackOpsOne, Inter, Permanent_Marker } from 'next/font/google'
 
 import Navbar from '../components/navbar/navbar'
+import Navigation, {Direction} from '../components/navbar/navigation'
 
-// const fontStyle = Inter({ subsets: ['latin'] })
-
-const fontStyle = Inter({
- style: ['normal'],
- subsets: ['latin']
-})
+const fontStyle = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Animax',
@@ -24,7 +20,7 @@ const menus : IOption[] = [
   {
     name:"Home",
     href:"/",
-    sub: [],
+    sub: null,
     icon:"home"
   },
   {
@@ -33,33 +29,33 @@ const menus : IOption[] = [
     sub: [
      {
       name:"Bishounen",
-      href:"",
-      sub:[],
-      icon:""
+      href:"/search",
+      sub: null,
+      icon: null
      },
      {
       name:"Chibi",
       href:"",
-      sub:[],
-      icon:""
+      sub: null,
+      icon: null
      },
      {
       name:"Dark Fantasy",
       href:"",
-      sub:[],
-      icon:""
+      sub: null,
+      icon: null
      },
      {
       name:"Eroguro",
       href:"",
-      sub:[],
-      icon:""
+      sub: null,
+      icon: null
      },
      {
       name:"Gore",
       href:"",
-      sub:[],
-      icon:""
+      sub: null,
+      icon: null
      },
      {
       name:"Harem",
@@ -67,54 +63,60 @@ const menus : IOption[] = [
       sub: [
      {
        name:"acción",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
+       icon: null
      },
      {
        name:"aventura",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
+       icon: null
      },
      {
        name:"comedia",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
+       icon: null
      },
      {
        name:"ciencia ficción",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
+       icon: null
      },
      {
        name:"romance",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
+       icon: null
      },
      {
        name:"terror",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
+       icon: null
      },
     ],
-      icon:""
+      icon: null
      },
      {
       name:"Isekai",
       href:"",
-      sub:[],
-      icon:""
+      sub: null,
+      icon: null
      },
      {
       name:"Kemono",
       href:"",
-      sub:[],
-      icon:""
+      sub: null,
+      icon: null
      },
      {
       name:"Kodomo",
       href:"",
-      sub:[],
-      icon:""
+      sub: null,
+      icon: null
      },
      {
       name:"Mecha",
@@ -122,103 +124,109 @@ const menus : IOption[] = [
       sub: [
      {
        name:"acción",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
+       icon: null
      },
      {
        name:"aventura",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
+       icon: null
      },
      {
        name:"comedia",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
+       icon: null
      },
      {
        name:"ciencia ficción",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
+       icon: null
      },
      {
        name:"romance",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
+       icon: null
      },
      {
        name:"terror",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
+       icon: null
      },
     ],
-      icon:""
+      icon: null
      },
      {
       name:"SD",
       href:"",
-      sub:[],
-      icon:""
+      sub: null,
+      icon: null
      },
      {
       name:"Seinen",
       href:"",
-      sub:[],
-      icon:""
+      sub: null,
+      icon: null
      },
      {
       name:"Shonen",
       href:"",
-      sub:[],
-      icon:""
+      sub: null,
+      icon: null
      },
      {
       name:"Shoujo",
       href:"",
-      sub:[],
-      icon:""
+      sub: null,
+      icon: null
      },
      {
       name:"Sports",
       href:"",
-      sub:[],
-      icon:""
+      sub: null,
+      icon: null
      },
     ],
     icon:"category"
   },
   {
     name:"Genero",
-    href:"/project/view",
+    href:"",
     sub: [
      {
        name:"acción",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
      },
      {
        name:"aventura",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
      },
      {
        name:"comedia",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
      },
      {
        name:"ciencia ficción",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
      },
      {
        name:"romance",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
      },
      {
        name:"terror",
-       href:"/project/view",
-       sub: []
+       href:"",
+       sub: null,
      },
     ],
     icon:"folder_copy"
@@ -226,7 +234,7 @@ const menus : IOption[] = [
   {
     name:"Search",
     href:"/search",
-    sub: [],
+    sub: null,
     icon:"search"
   }
 ]
@@ -243,7 +251,9 @@ export default function RootLayout({children}: { children: React.ReactNode})
      <header className={styles.header}>
       <img
       src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Animax.png" width="170"  height="50" alt="logo de animax"/>
-      <Navbar menus={menus} />
+      {//<Navbar menus={menus} />
+      }
+      <Navigation list={menus} direction={Direction.row} />
      </header>
      <main className={styles.main} >
       <Suspense fallback={<Loading />} >

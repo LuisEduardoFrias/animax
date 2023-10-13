@@ -9,6 +9,7 @@ const StyleDiv: CSSProperties = {
   borderRadius: '4px 4px',
   textAlign: 'center',
   width: '100%',
+  height: '30px',
   fontWeight: '900',
   backgroundColor: `rgb(24, 88, 176)`,
    
