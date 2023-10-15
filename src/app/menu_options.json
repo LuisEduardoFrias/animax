@@ -1,0 +1,222 @@
+[
+  {
+    "name": "Home",
+    "href": "/",
+    "sub": null,
+    "icon": "home"
+  },
+  {
+    "name": "Categorys",
+    "href": "",
+    "sub": [
+      {
+        "name": "Bishounen",
+        "href": "/search",
+        "sub": null,
+        "icon": null
+      },
+      {
+        "name": "Chibi",
+        "href": "",
+        "sub": null,
+        "icon": null
+      },
+      {
+        "name": "Dark Fantasy",
+        "href": "",
+        "sub": null,
+        "icon": null
+      },
+      {
+        "name": "Eroguro",
+        "href": "",
+        "sub": null,
+        "icon": null
+      },
+      {
+        "name": "Gore",
+        "href": "",
+        "sub": null,
+        "icon": null
+      },
+      {
+        "name": "Harem",
+        "href": "",
+        "sub": [
+          {
+            "name": "acción",
+            "href": "",
+            "sub": null,
+            "icon": null
+          },
+          {
+            "name": "aventura",
+            "href": "",
+            "sub": null,
+            "icon": null
+          },
+          {
+            "name": "comedia",
+            "href": "",
+            "sub": null,
+            "icon": null
+          },
+          {
+            "name": "ciencia ficción",
+            "href": "",
+            "sub": null,
+            "icon": null
+          },
+          {
+            "name": "romance",
+            "href": "",
+            "sub": null,
+            "icon": null
+          },
+          {
+            "name": "terror",
+            "href": "",
+            "sub": null,
+            "icon": null
+          }
+        ],
+        "icon": null
+      },
+      {
+        "name": "Isekai",
+        "href": "",
+        "sub": null,
+        "icon": null
+      },
+      {
+        "name": "Kemono",
+        "href": "",
+        "sub": null,
+        "icon": null
+      },
+      {
+        "name": "Kodomo",
+        "href": "",
+        "sub": null,
+        "icon": null
+      },
+      {
+        "name": "Mecha",
+        "href": "",
+        "sub": [
+          {
+            "name": "acción",
+            "href": "",
+            "sub": null,
+            "icon": null
+          },
+          {
+            "name": "aventura",
+            "href": "",
+            "sub": null,
+            "icon": null
+          },
+          {
+            "name": "comedia",
+            "href": "",
+            "sub": null,
+            "icon": null
+          },
+          {
+            "name": "ciencia ficción",
+            "href": "",
+            "sub": null,
+            "icon": null
+          },
+          {
+            "name": "romance",
+            "href": "",
+            "sub": null,
+            "icon": null
+          },
+          {
+            "name": "terror",
+            "href": "",
+            "sub": null,
+            "icon": null
+          }
+        ],
+        "icon": null
+      },
+      {
+        "name": "SD",
+        "href": "",
+        "sub": null,
+        "icon": null
+      },
+      {
+        "name": "Seinen",
+        "href": "",
+        "sub": null,
+        "icon": null
+      },
+      {
+        "name": "Shonen",
+        "href": "",
+        "sub": null,
+        "icon": null
+      },
+      {
+        "name": "Shoujo",
+        "href": "",
+        "sub": null,
+        "icon": null
+      },
+      {
+        "name": "Sports",
+        "href": "",
+        "sub": null,
+        "icon": null
+      }
+    ],
+    "icon": "category"
+  },
+  {
+    "name": "Genero",
+    "href": "",
+    "sub": [
+      {
+        "name": "acción",
+        "href": "",
+        "sub": null
+      },
+      {
+        "name": "aventura",
+        "href": "",
+        "sub": null
+      },
+      {
+        "name": "comedia",
+        "href": "",
+        "sub": null
+      },
+      {
+        "name": "ciencia ficción",
+        "href": "",
+        "sub": null
+      },
+      {
+        "name": "romance",
+        "href": "",
+        "sub": null
+      },
+      {
+        "name": "terror",
+        "href": "",
+        "sub": null
+      }
+    ],
+    "icon": "folder_copy"
+  },
+  {
+    "name": "Search",
+    "href": "/search",
+    "sub": null,
+    "icon": "search"
+  }
+]

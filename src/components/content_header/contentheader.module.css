@@ -1,0 +1,100 @@
+
+.containerIconMenuLogo {
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ grid-template-rows: 1fr;
+ grid-template-areas: 'iconMenu logo';
+}
+
+.iconMenu {
+ grid-area: iconMenu;
+ background-color: transparent;
+ cursor: pointer;
+ width: 35px;
+ height: 35px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ position: relative;
+ margin: auto;
+ margin-left: 10px ;
+}
+
+.logo {
+ grid-area: logo;
+ width: 170px;
+ height: 50px;
+}
+
+.containerMenu {
+ width: 100%;
+ display: flex;
+ justify-content: flex-start;
+ align-items: flex-start;
+}
+
+.rotate {
+  transition: transform .5s ease;
+  transform: rotate(90deg);
+  border: 5px solid rgb(24, 88, 176);
+  border-radius: 50%;
+  animation-name: borderShow;
+  animation-duration: .5s;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  animation-iteration-count: 1;
+}
+
+@keyframes borderShow {
+  25% {
+    border-left-width: 0px;
+    border-top-width: 5px;
+  }
+  50% {
+    border-top-width: 0px;
+    border-right-width: 5px;
+  }
+  75% {
+    border-right-width: 0px;
+    border-bottom-width: 5px;
+  }
+  100% {
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+  }
+}
+
+.normal {
+  transition: transform .5s ease;
+  transform: rotate(0deg);
+  border: 0 solid rgb(24, 88, 176);
+  border-radius: 50%;
+  animation-name: borderUnshow;
+  animation-duration: .5s;
+  animation-direction: reverse;
+  animation-fill-mode: none;
+  animation-iteration-count: 1;
+}
+
+@keyframes borderUnshow {
+  25% {
+    border-left-width: 0px;
+    border-top-width: 5px;
+  }
+  50% {
+    border-top-width: 0px;
+    border-right-width: 5px;
+  }
+  75% {
+    border-right-width: 0px;
+    border-bottom-width: 5px;
+  }
+  100% {
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+  }
+}
